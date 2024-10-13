@@ -88,7 +88,9 @@ async fn main() -> Result<(), io::Error> {
     for (i, script) in scripts.iter().enumerate() {
         // ffmpeg::command::add_audio でテキストから音声を生成
         let code = speech::voice::Code::new();
-        let voice = speech::voice::Name::from(code, i as u32).unwrap();
+
+        // 有料ボイスを選択
+        let voice = speech::voice::Name::from(code, ((i + 4) % 10) as u32).unwrap();
         info!("voice: {}", voice);
         let duration = match speech::local::command(
             script,
@@ -138,6 +140,7 @@ async fn main() -> Result<(), io::Error> {
         // ffmpeg::command::add_audio で音声を動画に追加
         // 動画ファイルを更新・追記していく
         let (input, audio, update_output) = if i == 0 {
+            // ブランク動画に対して、音声を追加し、音声を重ねる動画を更新
             (output, voice_output, update_output)
         } else {
             (update_output, voice_output, update_output)

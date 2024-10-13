@@ -199,8 +199,9 @@ pub fn add_audio(
                 "5M", // 映像ビットレート
                 "-filter_complex",
                 // `adelay` フィルタを使用して音声ファイルを遅延させる
+                // `loudnorm` フィルタを使用して音声を正規化する
                 &format!(
-                    "[1:a]adelay={}|{},volume=1[delayed_audio];[0:a][delayed_audio]amix=inputs=2:normalize=1:weights=1 {:.2}",
+                    "[1:a]adelay={}|{},volume=1,loudnorm=I=-16:TP=-1.5:LRA=11.5[delayed_audio];[0:a][delayed_audio]amix=inputs=2:normalize=1:weights=1 {:.2}",
                     start_milliseconds, start_milliseconds,
                     1.0/weight as f32
                 ),
