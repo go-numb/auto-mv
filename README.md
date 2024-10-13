@@ -9,8 +9,8 @@
 **ステップ 1: 環境設定**
 
 1. **Rust のインストール:** [https://www.rust-lang.org/](https://www.rust-lang.org/) から Rust をインストールします。
-2. **依存関係のインストール:** プロジェクトルートディレクトリで `cargo build` を実行します。
-3. **音声合成ライブラリの準備:**  音声合成ライブラリとして、`speech.exe` を使用します。このライブラリは、[https://www.microsoft.com/en-us/microsoft-365/speech](https://www.microsoft.com/en-us/microsoft-365/speech) からダウンロードできます。
+2. **依存関係のインストール:** プロジェクトルートディレクトリで `cargo build` を実行します。また、フリーソフトであるffmpegを使用しています。
+3. **音声合成ライブラリの準備:**  音声合成ライブラリとして、`speech.exe` を使用します。このライブラリは、[./source/speech.exe](./source/)に内包されています。適宜パスを通してください。
 4. **環境変数の設定:** `dotenv` ライブラリを使用して、`.env` ファイルに以下の環境変数を設定します。
    - `OVERWRITE`: 動画出力時に上書きを許可する場合は `true`、そうでなければ `false` を設定します。
    - `NVIDIA`: NVIDIA GPU を使用して動画エンコードを行う場合は `true`、そうでなければ `false` を設定します。
@@ -138,7 +138,7 @@
 
 1. **Rust のインストール:** [https://www.rust-lang.org/](https://www.rust-lang.org/) から Rust をインストールします。
 2. **依存関係のインストール:** プロジェクトルートディレクトリで `cargo build` を実行します。
-3. **音声合成ライブラリの準備:** `speech.exe` を [https://www.microsoft.com/en-us/microsoft-365/speech](https://www.microsoft.com/en-us/microsoft-365/speech) からダウンロードして、プロジェクトルートディレクトリに配置します。
+3. **音声合成ライブラリの準備:** Google cloud api text-to-speechへのリクエストを行う`speech.exe` を同梱しています。適宜パスを通してください。
 4. **環境変数の設定:** プロジェクトルートディレクトリに `.env` ファイルを作成し、以下のように環境変数を設定します。
    ```
    OVERWRITE=true
